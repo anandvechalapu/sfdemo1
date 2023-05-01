@@ -1,0 +1,25 @@
+<template>
+  <lightning-card title="User Surveys">
+    <div class="slds-m-around_medium">
+      <template if:true={surveys.length}>
+        <lightning-layout multiple-rows="true">
+          <template for:each={surveys} for:item="survey">
+            <lightning-layout-item key={survey.id} size="12" small-device-size="4"
+              medium-device-size="4" large-device-size="4">
+              <div class="slds-box slds-theme_shade">
+                <h3>{survey.name}</h3>
+                <p>{survey.description}</p>
+                <lightning-button variant="brand" label="Skip" title="Skip"
+                  onclick={handleSkip} data-survey-id={survey.id}>
+                </lightning-button>
+              </div>
+            </lightning-layout-item>
+          </template>
+        </lightning-layout>
+      </template>
+      <template if:true={!surveys.length}>
+        <p>No surveys to display.</p>
+      </template>
+    </div>
+  </lightning-card>
+</template>
